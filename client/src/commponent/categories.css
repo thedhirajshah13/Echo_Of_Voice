@@ -1,0 +1,40 @@
+.categories {
+  width: 38%;
+  margin: 40px;
+  margin-right: 15px;
+  /* border: 1px solid black; */
+}
+.categories button   {
+  display: flex;
+  margin: 10px;
+  width: 170px;
+  height: 40px;
+  background-color: rgb(70, 70, 187);
+  color: #fff;
+  border: 1px solid black;
+  border-radius: 4px;
+  font-size: 18px;
+  cursor: pointer;
+  margin: auto;
+  align-items: center;
+  justify-content: center;
+ 
+}
+ .categories  a{
+  text-decoration: none;
+ }
+
+.categories table {
+  margin: 10px 4px 10px 4px;
+  padding: 10px;
+  border-radius: 5px;
+
+  width: 96%;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid black;
+}
+table td {
+  font-size: 20px;
+  padding: 20px;
+}

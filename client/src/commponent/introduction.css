@@ -1,0 +1,39 @@
+
+.main_intro {
+    margin-top: 10px;
+    width: 100%;
+    height: 75vh;
+    background-color: #111;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .section-video {
+    width: 100%; /* Adjust the width to control video size */
+    height: auto; /* Maintain aspect ratio */
+    border-radius: 10px; /* Optional: Add rounded corners */
+    opacity: 0.8; /* Adjust transparency */
+  }
+  
+  .main_intro h1 {
+    position: absolute;
+    color: white;
+    font-size: 2rem;
+    z-index: 1; /* Ensure the text appears above the video */
+  }
+  
+.title h1{
+    font-size: 56px;
+    color: #fff;
+    font-weight: 900;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+.title p{
+    font-size: 25px;
+    color: #fff;
+    font-weight: 900;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
