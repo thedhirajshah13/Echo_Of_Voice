@@ -1,53 +1,51 @@
-.login{
-    width: 28%;
-    height: 50%;
-    display: flex;
-    flex-direction: column;
-margin: auto;
-border: none;
-border-radius: 5px;
-box-shadow:1px 1px 15px 2px   rgb(179, 174, 174);
-margin-top: 70px;
-padding: 10px;
-text-align: center;
-gap: 10px;
-
+.login {
+  width: 28%;
+  height: 50%;
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 1px 1px 15px 2px rgb(179, 174, 174);
+  margin-top: 70px;
+  padding: 10px;
+  text-align: center;
+  gap: 10px;
 }
-.login img{
-    width: 100%;
-    height: 200px;
-    mix-blend-mode: multiply;
-
+.login img {
+  width: 100%;
+  height: 200px;
+  mix-blend-mode: multiply;
 }
-.login input{
-    height: 20px;
-    outline: none;
-    border-top: none;
-    border-right: none;
-    border-left: none;
-    border-bottom: 2px solid rgb(166, 225, 245);
-    text-align: center;
-    font-size: 16px;
-    font-weight: 700;
-    margin-bottom: 20px;
-    padding: 10px;
+.login input {
+  height: 20px;
+  outline: none;
+  border-top: none;
+  border-right: none;
+  border-left: none;
+  border-bottom: 2px solid rgb(166, 225, 245);
+  text-align: center;
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  padding: 10px;
 }
-.login .login-btn{
-    background-color: rgba(166, 225, 245, 0.591);
-    height: 35px;
-    border-radius: 5px;
-   color: black;
-   font-size: 16px;
-   font-weight: 700;
-   box-shadow:1px 1px  2px 2px  #000;
+.login .login-btn {
+  background-color: rgba(166, 225, 245, 0.591);
+  height: 35px;
+  border-radius: 5px;
+  color: black;
+  font-size: 16px;
+  font-weight: 700;
+  box-shadow: 1px 1px 2px 2px #000;
 }
-.login div{
-    margin-bottom: 20px;
+.login div {
+  margin-bottom: 20px;
 }
-.login Button{
-    border: none;
-    box-shadow:1px 1px  2px 2px  rgb(179, 174, 174);
+.login Button {
+  border: none;
+  box-shadow: 1px 1px 2px 2px rgb(179, 174, 174);
 }
-.login p{
-    color:red;
+.login p {
+  color: red;
 }

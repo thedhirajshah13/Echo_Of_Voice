@@ -1,10 +1,4 @@
-
-
-
-
-
-// IMAGEUPLOAD FILE.....
- const ImageUpload = (req, res) => {
+const ImageUpload = (req, res) => {
   if (!req.file) {
     return res.status(404).json({ msg: "file not found" });
   }
@@ -13,6 +7,4 @@
   return res.status(200).json(imageUrl);
 };
 
-export default ImageUpload
-
-
+export default ImageUpload;

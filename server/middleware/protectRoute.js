@@ -4,7 +4,7 @@ import userModel from "../model/userSchema.js";
 const protectRoute = async (req, res, next) => {
   try {
     const token = req.cookies.jwt;
-    // console.log(token)
+
     if (!token) {
       return res
         .status(401)
@@ -28,4 +28,4 @@ const protectRoute = async (req, res, next) => {
       .json({ msg: "Internal Server Error", success: false });
   }
 };
- export default protectRoute
+export default protectRoute;

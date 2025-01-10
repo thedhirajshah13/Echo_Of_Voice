@@ -22,15 +22,12 @@ const Blog = () => {
   const [blogimg, setblogimg] = useState("");
   const navigate = useNavigate();
 
-  // for handling changes on form
   function handlechange(e) {
     setpost({
       ...post,
       [e.target.name]: e.target.value,
     });
   }
-
-  // for handling submit button..
 
   url = blogimg
     ? blogimg
@@ -54,7 +51,7 @@ const Blog = () => {
           );
 
           // Assuming the response contains the image URL.
-          console.log(response.data)
+          console.log(response.data);
           const imageUrl = response.data; // Adjust this based on your API response
           setblogimg(imageUrl);
           setpost((prevState) => ({
@@ -69,8 +66,6 @@ const Blog = () => {
 
     handleImage();
   }, [imgfile]);
-
-  // console.log(post)
 
   async function handlePublish(e) {
     e.preventDefault();

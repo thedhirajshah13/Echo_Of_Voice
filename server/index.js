@@ -1,7 +1,7 @@
 import express from "express";
 import connection from "./dataBase/dbconnection.js";
 import authRouter from "./Route/authRoute.js";
-import blogRouter from "./Route/blogRoute.js"
+import blogRouter from "./Route/blogRoute.js";
 import cors from "cors";
 import bodyParser from "body-parser";
 import dotenv from "dotenv";
@@ -30,7 +30,7 @@ app.use(
 app.use(bodyParser.json({ extended: true }));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/", authRouter);
-app.use("/",blogRouter)
+app.use("/", blogRouter);
 app.listen(port, () => {
   connection();
   console.log(`server started at port ${port}`);

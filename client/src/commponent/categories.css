@@ -2,9 +2,8 @@
   width: 38%;
   margin: 40px;
   margin-right: 15px;
-  /* border: 1px solid black; */
 }
-.categories button   {
+.categories button {
   display: flex;
   margin: 10px;
   width: 170px;
@@ -18,11 +17,10 @@
   margin: auto;
   align-items: center;
   justify-content: center;
- 
 }
- .categories  a{
+.categories a {
   text-decoration: none;
- }
+}
 
 .categories table {
   margin: 10px 4px 10px 4px;

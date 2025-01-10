@@ -23,7 +23,6 @@ const BlogSection = () => {
       setTotalPage(totalPages);
       console.log(posts, currentpage, totalPages);
       setpost(posts);
-      
     };
     getpost();
   }, [currentPage]);
@@ -67,16 +66,13 @@ const BlogSection = () => {
           Previous
         </button>
         <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
-          {/* <h4>
-            Page {currentPage} of {totalPage}
-          </h4> */}
           {page.map((page, index) => (
             <button
               style={
                 index + 1 === currentPage
                   ? {
                       background: "red",
-                      marginTop:"4%",
+                      marginTop: "4%",
                       width: "20%",
                       height: "40%",
                       border: "1px solid black",
@@ -86,14 +82,14 @@ const BlogSection = () => {
                   : {
                       width: "20%",
                       height: "40%",
-                      marginTop:"4%",
+                      marginTop: "4%",
                       border: "1px solid black",
                       borderRadius: "50%",
                       textAlign: "center",
                     }
               }
               className="pageNumber"
-              onClick={()=>(setCurrentPage(index+1))}
+              onClick={() => setCurrentPage(index + 1)}
             >
               {page}
             </button>

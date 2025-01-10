@@ -22,7 +22,7 @@ const Login = () => {
   }
   async function handleSubmit(e) {
     e.preventDefault();
-    // posting request to backend..
+
     try {
       const url = "http://localhost:8000/login";
       const response = await axios.post(url, JSON.stringify(login), {
@@ -39,7 +39,7 @@ const Login = () => {
       setAuth(result);
       Naviagte("/");
     } catch (error) {
-      console.log(`client->login Error ${error}`)
+      console.log(`client->login Error ${error}`);
     }
   }
 

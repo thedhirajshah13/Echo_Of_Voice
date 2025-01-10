@@ -31,15 +31,15 @@ const Register = () => {
         withCredentials: true,
       });
 
-      const result =response;
-      console.log(result)
+      const result = response;
+      console.log(result);
       if (result.status === 201) {
         setTimeout(() => {
           localStorage.setItem("blog-user", JSON.stringify(result.data));
           setAuth(result);
           setinput("");
           Navigate("/login");
-        },1000);
+        }, 1000);
       }
     } catch (error) {
       console.log(`register issue ${error}`);
@@ -80,14 +80,7 @@ const Register = () => {
           placeholder="Password..."
           onChange={handleChange}
         />
-        {/* <input
-          type="password"
-          name="confirm"
-          value={input.confirm}
-        
-          placeholder="Confirm Password..."
-          onChange={handleChange}
-        /> */}
+
         <br />
         <button type="submit" className="login-btn">
           Sign-Up

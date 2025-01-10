@@ -4,8 +4,6 @@ import bcrypt from "bcrypt";
 
 import generateToken from "../utils/generateToken.js";
 
-// for registring User...
-
 export const userRegister = async (req, res) => {
   try {
     const { name, email, password, profileImg } = req.body;
@@ -47,8 +45,6 @@ export const userRegister = async (req, res) => {
       .json({ msg: "Internal Server Error", success: false });
   }
 };
-
-// for validationg login...
 
 export const userLogin = async (req, res) => {
   try {

@@ -22,11 +22,10 @@ export const postBlog = async (req, res) => {
 
 export const getpost = async (req, res) => {
   try {
-    // console.log(req.query.page)
     const page = parseInt(req.query.page) || 1;
     const limit = parseInt(req.body.limit) || 3;
     const skip = (page - 1) * limit;
-    // console.log(page, limit, skip);
+
     const posts = await blogPostModel.find().skip(skip).limit(limit);
     const totalPosts = await blogPostModel.countDocuments();
 

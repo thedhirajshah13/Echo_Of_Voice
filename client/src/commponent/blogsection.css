@@ -8,7 +8,7 @@
   width: 19rem;
   height: 318px;
   margin: 4px;
-  /* border: 1px solid black; */
+
   border-radius: 20px;
   box-shadow: 7px 8px 30px grey;
   padding: 10px;
@@ -24,23 +24,13 @@
   height: 70px;
   display: flex;
   justify-content: center;
-  /* margin: 10px; */
 }
 .pagination button {
   width: 60px;
   height: 40px;
-  
+
   border: 1px solid black;
   border-radius: 60%;
   text-align: center;
   cursor: pointer;
-  /* align-items: center; */
 }
-/* .pagination button .pageNumber {
-  width: "20px";
-  height: "auto";
-  border: "1px solid black";
-  border-radius: 50%;
-  text-align: center;
-  align-items: center;
-} */

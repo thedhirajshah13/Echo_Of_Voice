@@ -7,55 +7,52 @@
 }
 .blog {
   margin: 10px 30px;
-  
-
 }
-.blog .first-part{
+.blog .first-part {
   display: flex;
   justify-content: space-around;
   margin: 40px 0;
   gap: 10px;
 }
-.first-part label{
- font-size: 15px;
- height: 35px;
+.first-part label {
+  font-size: 15px;
+  height: 35px;
 }
-.blog .first-part input{
+.blog .first-part input {
   width: 30%;
   border-radius: 10px;
   text-align: center;
   border: none;
-  border-bottom: 2.8px solid rgba(166, 225, 245, 0.591)
-  ;
+  border-bottom: 2.8px solid rgba(166, 225, 245, 0.591);
   font-size: 20px;
 }
-.blog .first-part input:focus-visible{
+.blog .first-part input:focus-visible {
   outline: none;
 }
-.blog textarea{
+.blog textarea {
   display: flex;
   margin: auto;
   width: 100%;
   margin-top: 10px;
-border-radius: 10px;
-font-size: 15px;
-border-top: none;
-text-align: center;
-overflow-x: hidden;
+  border-radius: 10px;
+  font-size: 15px;
+  border-top: none;
+  text-align: center;
+  overflow-x: hidden;
 }
-.blog textarea:focus-visible{
+.blog textarea:focus-visible {
   outline: none;
 }
-.blog button{
- width: 20%;
-  
-background-color:  rgba(166, 225, 245, 0.591);
-border-radius: 10px;
-height: 40px;
-border:none;
-font-weight: 900;
-font-size: 15px;
+.blog button {
+  width: 20%;
+
+  background-color: rgba(166, 225, 245, 0.591);
+  border-radius: 10px;
+  height: 40px;
+  border: none;
+  font-weight: 900;
+  font-size: 15px;
 }
-.blog button:focus-visible{
+.blog button:focus-visible {
   outline: none;
 }
