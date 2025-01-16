@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap');
+
 .blogsection {
   margin-top: 40px;
   display: flex;
   flex-wrap: wrap;
   gap: 30px;
+  font-family: "Roboto Condensed";
 }
 .postCard {
   width: 19rem;

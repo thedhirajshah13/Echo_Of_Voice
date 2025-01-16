@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import "./blogsection.css";
+import { useBlogContentContext } from "../Context/blogContentContext";
 
 const BlogSection = () => {
   const [post, setpost] = useState([]);

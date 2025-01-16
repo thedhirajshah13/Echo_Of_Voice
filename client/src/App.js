@@ -1,10 +1,12 @@
 import { BrowserRouter, Navigate, Routes, Route } from "react-router-dom";
 import BlogPost from "./Pages/BlogPost";
 import { AuthContextProvider, useAuthContext } from "./Context/authContext";
+import { BlogContentProvider } from "./Context/blogContentContext";
 import { useState } from "react";
 import Login from "./commponent/Login";
 import Register from "./commponent/Register";
 import Main from "./Pages/Main";
+import Fullblog from "./commponent/Fullblog";
 import "./app.css";
 
 function App() {
@@ -13,15 +15,18 @@ function App() {
   return (
     <BrowserRouter>
       <AuthContextProvider>
-        <Routes>
-          <Route path="/" element={<PrivateRoute />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="register" element={<Register />} />
-          <Route
-            path="createpost"
-            element={auth ? <BlogPost /> : <Navigate to="/login" />}
-          />
-        </Routes>
+        <BlogContentProvider>
+          <Routes>
+            <Route path="/" element={<PrivateRoute />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="register" element={<Register />} />
+            <Route path="fullblog/:id" element={<Fullblog/>}/>
+            <Route
+              path="createpost"
+              element={auth ? <BlogPost /> : <Navigate to="/login" />}
+            />
+          </Routes>
+        </BlogContentProvider>
       </AuthContextProvider>
     </BrowserRouter>
   );

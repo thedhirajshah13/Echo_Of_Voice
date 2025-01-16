@@ -1,3 +1,4 @@
+// import blogModel from "../model/blogPost.js";
 import blogPostModel from "../model/blogPost.js";
 
 export const postBlog = async (req, res) => {
@@ -40,3 +41,18 @@ export const getpost = async (req, res) => {
     res.status(500).json({ success: false, msg: "Server error", error });
   }
 };
+
+export const fullBlog=async(req, res)=>{
+   try {
+    const {id}=req.params;
+    const fullBlog=await blogPostModel.findOne({_id:id});
+    if(!fullBlog){
+      res.status(404).json({success:false, msg:"Blog Not Found"});
+    }
+    if(fullBlog){
+      res.status(200).json({success:true, fullBlog});
+    }
+   } catch (error) {
+    res.status(500).json({success:false,msg:"Server error", error})
+   }
+}
