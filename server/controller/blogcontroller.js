@@ -42,17 +42,20 @@ export const getpost = async (req, res) => {
   }
 };
 
-export const fullBlog=async(req, res)=>{
-   try {
-    const {id}=req.params;
-    const fullBlog=await blogPostModel.findOne({_id:id});
-    if(!fullBlog){
-      res.status(404).json({success:false, msg:"Blog Not Found"});
+export const fullBlog = async (req, res) => {
+  try {
+    const { id } = req.params;
+    const fullBlog = await blogPostModel
+      .findOne({ _id: id })
+      .populate("user", "-password");
+
+    if (!fullBlog) {
+      res.status(404).json({ success: false, msg: "Blog Not Found" });
     }
-    if(fullBlog){
-      res.status(200).json({success:true, fullBlog});
+    if (fullBlog) {
+      res.status(200).json({ success: true, fullBlog });
     }
-   } catch (error) {
-    res.status(500).json({success:false,msg:"Server error", error})
-   }
-}
+  } catch (error) {
+    res.status(500).json({ success: false, msg: "Server error", error });
+  }
+};

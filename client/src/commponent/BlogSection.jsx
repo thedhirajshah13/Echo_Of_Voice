@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Link, Navigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./blogsection.css";
-import { useBlogContentContext } from "../Context/blogContentContext";
+
 
 const BlogSection = () => {
   const [post, setpost] = useState([]);
@@ -22,7 +22,7 @@ const BlogSection = () => {
       const { posts, totalPages, currentpage } = response.data;
       setCurrentPage(currentpage);
       setTotalPage(totalPages);
-      console.log(posts, currentpage, totalPages);
+      
       setpost(posts);
     };
     getpost();
