@@ -30,7 +30,7 @@ const Navbar = () => {
       </div>
       <div className="userInfo">
         <p>Composs</p>
-        <button style={{ width: "10px", height: "10px" }} onClick={logout}>
+        <button style={{ width: "40px", height: "40px" }} onClick={logout}>
           LogOut
         </button>
       </div>

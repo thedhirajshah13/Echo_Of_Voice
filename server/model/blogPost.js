@@ -1,5 +1,5 @@
 import mongoose from "mongoose";
-import userModel from "./userSchema.js";
+
 
 const blogSchema = mongoose.Schema(
   {
@@ -21,9 +21,11 @@ const blogSchema = mongoose.Schema(
     },
     user: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: userModel,
+      ref: "user",
       required: true,
     },
+    comments: [{ type: mongoose.Schema.Types.ObjectId, ref: "comments" }],
+    like: [{ type: mongoose.Schema.Types.ObjectId, ref: "likes" }],
   },
   { timeStamps: true }
 );

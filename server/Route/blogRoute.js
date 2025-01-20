@@ -1,7 +1,7 @@
 import express from "express";
 import ImageUpload from "../controller/imagehandle.js";
 
-import { postBlog, getpost,fullBlog } from "../controller/blogcontroller.js";
+import { postBlog, getpost,fullBlog,postComment } from "../controller/blogcontroller.js";
 import protectRoute from "../middleware/protectRoute.js";
 import uploads from "../middleware/multer.js";
 
@@ -12,5 +12,6 @@ blogRouter.post("/file/upload", uploads.single("file"), ImageUpload);
 blogRouter.post("/blogpost", protectRoute, postBlog);
 blogRouter.get("/post", protectRoute, getpost);
 blogRouter.get("/fullblog/:id",fullBlog);
+blogRouter.post('/fullblog/comments',protectRoute,postComment);
 
 export default blogRouter;

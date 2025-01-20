@@ -1,5 +1,6 @@
 // import blogModel from "../model/blogPost.js";
 import blogPostModel from "../model/blogPost.js";
+import commentModel from "../model/commentPost.js";
 
 export const postBlog = async (req, res) => {
   try {
@@ -47,15 +48,50 @@ export const fullBlog = async (req, res) => {
     const { id } = req.params;
     const fullBlog = await blogPostModel
       .findOne({ _id: id })
-      .populate("user", "-password");
+      .populate("user", "-password")
+      .populate({
+        path: "comments",
+        populate: {
+          path: "user",
+          select: "-password",
+        },
+      });
+
+    
 
     if (!fullBlog) {
       res.status(404).json({ success: false, msg: "Blog Not Found" });
     }
+    // 
     if (fullBlog) {
       res.status(200).json({ success: true, fullBlog });
     }
   } catch (error) {
+    console.log(error);
     res.status(500).json({ success: false, msg: "Server error", error });
+  }
+};
+
+export const postComment = async (req, res) => {
+  try {
+    const { message, blog } = req.body;
+    console.log(req.user._id);
+
+    const blogComment = new commentModel({
+      message,
+      blog,
+      user: req.user._id,
+    });
+
+    await blogComment.save();
+    await blogPostModel.findByIdAndUpdate(blog, {
+      $push: { comments: blogComment._id },
+    });
+    res
+      .status(200)
+      .json({ success: true, msg: "your comments has been posted Thanku" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, msg: "Server Error" });
   }
 };
