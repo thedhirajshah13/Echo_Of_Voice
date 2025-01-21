@@ -12,7 +12,7 @@ const Fullblog = () => {
   const { auth } = useAuthContext();
 
   const { id } = useParams();
-  // console.log(id);
+  
 
   useEffect(() => {
     const fullBlog = async () => {
