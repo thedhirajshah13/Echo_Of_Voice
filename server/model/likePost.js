@@ -1,6 +1,5 @@
 import mongoose from "mongoose";
-import blogModel from "./blogPost";
-import userModel from "./userSchema";
+
 
 const likeSchema = mongoose.Schema(
   {

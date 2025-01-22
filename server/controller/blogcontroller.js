@@ -1,6 +1,9 @@
 // import blogModel from "../model/blogPost.js";
+import blogModel from "../model/blogPost.js";
 import blogPostModel from "../model/blogPost.js";
 import commentModel from "../model/commentPost.js";
+import likeModel from "../model/likePost.js";
+import mongoose from "mongoose";
 
 export const postBlog = async (req, res) => {
   try {
@@ -55,14 +58,19 @@ export const fullBlog = async (req, res) => {
           path: "user",
           select: "-password",
         },
+      })
+      .populate({
+        path: "like",
+        populate: {
+          path: "user",
+          select: "-password",
+        },
       });
-
-    
 
     if (!fullBlog) {
       res.status(404).json({ success: false, msg: "Blog Not Found" });
     }
-    // 
+    //
     if (fullBlog) {
       res.status(200).json({ success: true, fullBlog });
     }
@@ -90,6 +98,44 @@ export const postComment = async (req, res) => {
     res
       .status(200)
       .json({ success: true, msg: "your comments has been posted Thanku" });
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ success: false, msg: "Server Error" });
+  }
+};
+export const blogLike = async (req, res) => {
+  try {
+    const blogId = req.body.blog;
+    console.log(blogId);
+    if (!req.body) {
+      return res.status(309).json({
+        success: false,
+        msg: "There is some issue , Try after sometime",
+      });
+    }
+    const exsistingLike = await likeModel.findOne({
+      user: req.user_id,
+      blog: blogId,
+    });
+    if (exsistingLike) {
+      return res
+        .status(400)
+        .json({ success: false, msg: "You Already Liked the post" });
+    }
+    if (req.body) {
+      console.log(req.user);
+      const likeData = new likeModel({
+        user: req.user._id,
+        blog: blogId,
+      });
+      await likeData.save();
+      await blogModel.findByIdAndUpdate(blogId, {
+        $push: { like: likeData._id },
+      });
+      return res
+        .status(200)
+        .json({ success: true, msg: "Thank You for your like" });
+    }
   } catch (error) {
     console.log(error);
     res.status(500).json({ success: false, msg: "Server Error" });

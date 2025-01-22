@@ -1,18 +1,18 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useAuthContext } from "../Context/authContext";
-import SendIcon from '@mui/icons-material/Send';
-import ThumbUpAltIcon from '@mui/icons-material/ThumbUpAlt';
+import SendIcon from "@mui/icons-material/Send";
+import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import axios from "axios";
 import "./fullblog.css";
 
 const Fullblog = () => {
   const [fullBlog, setfullBlog] = useState();
-  const [comment,setComment]=useState();
+  const [comment, setComment] = useState();
   const { auth } = useAuthContext();
+  console.log(auth.id)
 
   const { id } = useParams();
-  
 
   useEffect(() => {
     const fullBlog = async () => {
@@ -24,35 +24,48 @@ const Fullblog = () => {
         }
 
         setfullBlog(response.data.fullBlog);
-        
       } catch (error) {
         console.log(`full Blog Page Error -> ${error}`);
       }
     };
     fullBlog();
   }, [id]);
-
-  const handleComment=(e)=>{
-    setComment(e.target.value);
-    console.log(comment)
-  }
-  // const handleCommentSubmit=async()=>{
-  //   try {
-  //     const url="http://localhost:8000/fullblog/comments"
-
-  //     const response =await axios.post(url,JSON.stringify(comment),{
-  //       method:"POST",
-  //       withcredential:true,
-
-  //       Headers:{
-  //         content:"application/json"
-  //       }
-  //     })
-  //   } catch (error) {
-      
-  //   }
-  // }
   
+
+  const handleComment = (e) => {
+    setComment(e.target.value);
+    // console.log(comment)
+  };
+  const handleCommentSubmit = async () => {
+    try {
+      const url = "http://localhost:8000/fullblog/comments";
+      const commentData = {
+        message: comment,
+        blog: id,
+      };
+
+      const response = await axios.post(url, commentData, {
+        method: "POST",
+        withCredentials: true,
+
+        headers: {
+          content: "application/json",
+        },
+      });
+      console.log(response);
+    } catch (error) {
+      console.log(`Comment Error-> ${error}`);
+    }
+  };
+  const handleLikeSubmit=async()=>{
+    try {
+    console.log("like button is working")
+    } catch (error) {
+      
+    }
+  }
+
+  console.log(fullBlog);
 
   return (
     <div className="fullblog">
@@ -79,29 +92,41 @@ const Fullblog = () => {
                 </p>
               </div>
               <div className="blog-interaction">
-                <span>{<ThumbUpAltIcon/>}</span>
-                
-                <input type="text" placeholder="Add a comment..." onChange={handleComment} value={comment} />
-                <button>{<SendIcon/>}</button>
+                <span
+                  style={
+                    fullBlog.like?.some((like) => like.user?._id === auth?.id)
+                      ? { color: "blue",  }
+                      : {}
+                  }
+                >
+                  {fullBlog.like?.length || 0}
+                  {<ThumbUpAltIcon onClick={handleLikeSubmit}/>}
+                </span>
+
+                <input
+                  type="text"
+                  placeholder="Add a comment..."
+                  onChange={handleComment}
+                  value={comment}
+                />
+                <button onClick={handleCommentSubmit}>{<SendIcon />}</button>
               </div>
             </>
           )}
           <div className="comment">
             <h3>{fullBlog.comments.length} Comments</h3>
-            {
-              fullBlog.comments.length>0?<div className="comment-section">
-                {
-                  fullBlog.comments.map((comm)=>(
-                    <div className="comment-card">
-                      <p>{comm.message}</p>
-                      <h4>{comm.user.name}</h4>
-                    </div>
-                  ))
-                }
+            {fullBlog.comments.length > 0 ? (
+              <div className="comment-section">
+                {fullBlog.comments.map((comm) => (
+                  <div className="comment-card">
+                    <p>{comm.message}</p>
+                    <h4>{comm.user.name}</h4>
+                  </div>
+                ))}
               </div>
-
-              :""
-            }
+            ) : (
+              ""
+            )}
           </div>
         </div>
       ) : (
