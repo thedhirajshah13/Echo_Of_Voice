@@ -59,8 +59,18 @@ const Fullblog = () => {
   };
   const handleLikeSubmit=async()=>{
     try {
-    console.log("like button is working")
+    const url="http://localhost:8000/fullblog/like"
+    const response=await axios.post(url,{blog:id},{
+      method:"post",
+      withCredentials:true,
+      headers: {
+        content: "application/json",
+      },
+    })
+    const result=response.data;
+    console.log(result)
     } catch (error) {
+      console.log(error)
       
     }
   }

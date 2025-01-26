@@ -106,7 +106,7 @@ export const postComment = async (req, res) => {
 export const blogLike = async (req, res) => {
   try {
     const blogId = req.body.blog;
-    console.log(blogId);
+    // console.log(blogId);
     if (!req.body) {
       return res.status(309).json({
         success: false,
