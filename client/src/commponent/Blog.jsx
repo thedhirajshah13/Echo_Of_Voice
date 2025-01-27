@@ -5,7 +5,7 @@ import PhotoCameraBackOutlinedIcon from "@mui/icons-material/PhotoCameraBackOutl
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-let url;
+
 
 const Blog = () => {
   let postData = {
