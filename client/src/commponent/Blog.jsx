@@ -29,7 +29,7 @@ const Blog = () => {
     });
   }
 
-  url = blogimg
+  let url = blogimg
     ? blogimg
     : "https://img.freepik.com/premium-photo/modern-dark-wooden-office-desk-night-warm-light-from-table-lamp-with-laptop_67155-24625.jpg?w=1380";
 

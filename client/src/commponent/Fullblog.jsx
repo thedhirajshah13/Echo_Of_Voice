@@ -5,15 +5,18 @@ import SendIcon from "@mui/icons-material/Send";
 import ThumbUpAltIcon from "@mui/icons-material/ThumbUpAlt";
 import axios from "axios";
 import "./fullblog.css";
+import useListenCommentAndLike from "../socketHooks";
+import { useSocketContext } from "../Context/socketContext";
 
 const Fullblog = () => {
+  const { socket } = useSocketContext();
   const [fullBlog, setfullBlog] = useState();
   const [comment, setComment] = useState();
   const { auth } = useAuthContext();
-  console.log(auth.id)
+  console.log(auth.id);
 
   const { id } = useParams();
-
+  useListenCommentAndLike(setfullBlog);
   useEffect(() => {
     const fullBlog = async () => {
       try {
@@ -30,11 +33,10 @@ const Fullblog = () => {
     };
     fullBlog();
   }, [id]);
-  
 
   const handleComment = (e) => {
     setComment(e.target.value);
-    // console.log(comment)
+    
   };
   const handleCommentSubmit = async () => {
     try {
@@ -53,29 +55,36 @@ const Fullblog = () => {
         },
       });
       console.log(response);
+      socket.emit("newComment", { message: comment, blog: id, user: auth });
+      setComment("");
     } catch (error) {
       console.log(`Comment Error-> ${error}`);
     }
   };
-  const handleLikeSubmit=async()=>{
+  const handleLikeSubmit = async () => {
     try {
-    const url="http://localhost:8000/fullblog/like"
-    const response=await axios.post(url,{blog:id},{
-      method:"post",
-      withCredentials:true,
-      headers: {
-        content: "application/json",
-      },
-    })
-    const result=response.data;
-    console.log(result)
+      const url = "http://localhost:8000/fullblog/like";
+      const response = await axios.post(
+        url,
+        { blog: id },
+        {
+          method: "post",
+          withCredentials: true,
+          headers: {
+            content: "application/json",
+          },
+        }
+      );
+      const result = response.data;
+      socket.emit("newLike", { blog: id, user: auth });
+      console.log(result);
     } catch (error) {
-      console.log(error)
-      
+      console.log(error);
     }
-  }
+  };
 
   console.log(fullBlog);
+  const likesArray = Array.isArray(fullBlog?.like) ? fullBlog.like : ""; 
 
   return (
     <div className="fullblog">
@@ -104,13 +113,31 @@ const Fullblog = () => {
               <div className="blog-interaction">
                 <span
                   style={
-                    fullBlog.like?.some((like) => like.user?._id === auth?.id)
-                      ? { color: "blue",  }
+                    likesArray.some((like) => like.user?._id === auth?.id)
+                      ? { color: "blue" }
                       : {}
                   }
                 >
-                  {fullBlog.like?.length || 0}
-                  {<ThumbUpAltIcon onClick={handleLikeSubmit}/>}
+                  {likesArray.length} 
+                  <ThumbUpAltIcon
+                    onClick={handleLikeSubmit}
+                    style={{
+                      cursor: likesArray.some(
+                        (like) => like.user?._id === auth?.id
+                      )
+                        ? "not-allowed"
+                        : "pointer",
+                      color: likesArray.some(
+                        (like) => like.user?._id === auth?.id
+                      )
+                        ? "blue"
+                        : "gray",
+                    }}
+                    
+                    disabled={likesArray.some(
+                      (like) => like.user?._id === auth?.id
+                    )}
+                  />
                 </span>
 
                 <input
