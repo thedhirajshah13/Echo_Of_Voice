@@ -2,14 +2,30 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./blogsection.css";
-
+import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
+import ModeCommentIcon from "@mui/icons-material/ModeComment";
+import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
+import style from "../asset/BlogImage/style.jpeg";
+import shop from "../asset/BlogImage/shop.jpeg";
+import sports from "../asset/BlogImage/sports.jpeg";
+import tech from "../asset/BlogImage/tech.png";
+import travel from "../asset/BlogImage/travel.jpeg";
 
 const BlogSection = () => {
   const [post, setpost] = useState([]);
   const [totalPage, setTotalPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
-  const limit = 3;
+  const limit = 6;
   const page = Array.from({ length: totalPage }, (_, index) => index + 1);
+  const imageCol = [
+    style,
+    shop,
+    sports,
+    tech,
+    travel,
+    "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2",
+  ];
 
   useEffect(() => {
     const getpost = async () => {
@@ -20,9 +36,10 @@ const BlogSection = () => {
         }
       );
       const { posts, totalPages, currentpage } = response.data;
+      console.log(posts);
       setCurrentPage(currentpage);
       setTotalPage(totalPages);
-      
+
       setpost(posts);
     };
     getpost();
@@ -46,17 +63,18 @@ const BlogSection = () => {
               }
               onError={(e) => {
                 e.target.src =
-                  "https://images.unsplash.com/photo-1515378791036-0648a3ef77b2"; // Default image URL
+                  imageCol[Math.floor(Math.random() * imageCol.length)]; // Default image URL
               }}
               alt="blog-img"
             />
-            <h4>{post.title}</h4>
-            <p>
-              {post.blog.substring(0, 150)}{" "}
-              <Link to={`fullblog/${post._id}`}>
-                click here to read full blog...
-              </Link>
-            </p>
+            <Link to={`fullblog/${post._id}`}>
+              <h4>{post.title}</h4>
+            </Link>
+            <hr />
+
+            <span className="comment-icon">
+              {<ModeCommentOutlinedIcon />} {post.comments.length}{" "}
+            </span>
           </div>
         ))
       ) : (
@@ -64,7 +82,7 @@ const BlogSection = () => {
       )}
       <div className="pagination">
         <button onClick={handlePrevPage} disabled={currentPage === 1}>
-          Previous
+          {<ArrowBackIosIcon />}
         </button>
         <div style={{ display: "flex", justifyContent: "center", gap: "10px" }}>
           {page.map((page, index) => (
@@ -98,7 +116,7 @@ const BlogSection = () => {
         </div>
 
         <button onClick={handleNextPage} disabled={currentPage === totalPage}>
-          Next
+          {<ArrowForwardIosIcon />}
         </button>
       </div>
     </div>

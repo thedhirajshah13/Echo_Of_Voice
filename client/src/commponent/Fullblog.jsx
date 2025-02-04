@@ -76,7 +76,7 @@ const Fullblog = () => {
         }
       );
       const result = response.data;
-      socket.emit("newLike", { blog: id, user: auth });
+      socket.emit("newLike", { blog: id, user: auth.id });
       console.log(result);
     } catch (error) {
       console.log(error);

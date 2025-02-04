@@ -28,7 +28,7 @@ export const postBlog = async (req, res) => {
 export const getpost = async (req, res) => {
   try {
     const page = parseInt(req.query.page) || 1;
-    const limit = parseInt(req.body.limit) || 3;
+    const limit = parseInt(req.body.limit) || 4;
     const skip = (page - 1) * limit;
 
     const posts = await blogPostModel.find().skip(skip).limit(limit);
@@ -114,9 +114,10 @@ export const blogLike = async (req, res) => {
       });
     }
     const exsistingLike = await likeModel.findOne({
-      user: req.user_id,
+      user: req.user._id,
       blog: blogId,
     });
+    console.log(exsistingLike);
     if (exsistingLike) {
       return res
         .status(400)

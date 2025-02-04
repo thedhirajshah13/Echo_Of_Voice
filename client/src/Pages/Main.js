@@ -8,10 +8,11 @@ const Main = () => {
     <>
       <Navbar/>
       <Introduction/>
-      <div style={{display:'grid' , gridTemplateColumns:'30% 70%'}}>
-      <Categories/>
+      
+      <div style={{ width:"60%", display:"flex",margin:"1% 10% 1% 10%", padding:"1% 10% 1% 10%"}}>
       <BlogSection/>
       </div>
+      
       
     </>
   );

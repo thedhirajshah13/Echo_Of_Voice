@@ -1,5 +1,6 @@
 import React from "react";
-import Logo from "../asset/logo.png";
+// import Logo from "../asset/logo.png";
+import Logo from "../asset/Icon.webp";
 import "./navbar.css";
 import { Link } from "react-router-dom";
 import axios from "axios";
@@ -24,6 +25,7 @@ const Navbar = () => {
     <div className="navbar">
       <div>
         <img src={Logo} alt="logo" />
+        <span>Echo Of Voice</span>
       </div>
       <div className="visiting_links">
         <Link to="/">{<HomeIcon />}Home</Link>
