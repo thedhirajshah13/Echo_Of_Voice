@@ -1,6 +1,9 @@
 import  {useContext,createContext, useState} from 'react'
 
 export const blogContentContext =createContext()
+export const useBlogContentContex=()=>{
+    return useContext(blogContentContext)
+}
 
 export const BlogContentProvider=({children})=>{
     const [blogContent, setBlogContent]=useState([])
@@ -10,4 +13,3 @@ export const BlogContentProvider=({children})=>{
     )
 
 }
-export const useBlogContentContext=()=>useContext(blogContentContext);

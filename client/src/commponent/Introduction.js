@@ -1,6 +1,7 @@
 import React from "react";
 import "./introduction.css";
 import IntroCard from "./IntroCard";
+import Featured from "./Featured";
 
 const Introduction = () => {
   return (
@@ -16,6 +17,7 @@ const Introduction = () => {
       </div>
       
       <IntroCard />
+      <Featured/>
     </>
   );
 };

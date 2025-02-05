@@ -2,9 +2,10 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./blogsection.css";
+import {useBlogContentContex} from "../Context/blogContentContext"
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import ArrowBackIosIcon from "@mui/icons-material/ArrowBackIos";
-import ModeCommentIcon from "@mui/icons-material/ModeComment";
+
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 import style from "../asset/BlogImage/style.jpeg";
 import shop from "../asset/BlogImage/shop.jpeg";
@@ -14,6 +15,7 @@ import travel from "../asset/BlogImage/travel.jpeg";
 
 const BlogSection = () => {
   const [post, setpost] = useState([]);
+  const {setBlogContent} =useBlogContentContex();
   const [totalPage, setTotalPage] = useState(0);
   const [currentPage, setCurrentPage] = useState(1);
   const limit = 6;
@@ -41,6 +43,7 @@ const BlogSection = () => {
       setTotalPage(totalPages);
 
       setpost(posts);
+      setBlogContent(posts)
     };
     getpost();
   }, [currentPage]);

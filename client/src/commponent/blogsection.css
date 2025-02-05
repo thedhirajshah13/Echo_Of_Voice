@@ -2,7 +2,7 @@
 @import url("https://fonts.googleapis.com/css2?family=PT+Serif:ital,wght@0,400;0,700;1,400;1,700&family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap");
 
 .blogsection {
-  margin-top: 40px;
+  margin-top: 250px;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
