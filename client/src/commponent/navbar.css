@@ -54,6 +54,8 @@
 .navbar .visiting_links {
   display: flex;
   margin: auto;
+  gap: 15px;
+ 
 }
 .visiting_links a {
   display: flex;
@@ -61,6 +63,7 @@
   font-size: 20px;
 
   text-decoration: none;
+  cursor: pointer;
 }
 .navbar .userInfo {
   display: flex;

@@ -186,7 +186,8 @@
   text-align: right;
 }
 
-@media screen and (max-width: 768px) {
+/* RESPONSIVE DESIGN */
+@media screen and (max-width: 1024px) {
   .fullblog-container {
     padding: 15px;
   }
@@ -199,11 +200,71 @@
     font-size: 1rem;
   }
 
+  .blog-interaction {
+    flex-direction: column;
+    gap: 10px;
+  }
+
   .blog-interaction input[type="text"] {
-    width: 60%;
+    width: 100%;
   }
 
   .blog-interaction button {
-    width: 20%;
+    width: 100%;
+  }
+
+  .comment-card {
+    width: 100%;
+  }
+}
+
+
+@media screen and (max-width: 768px) {
+  .fullblog-container {
+    padding: 10px;
+  }
+
+  .fullblog-title {
+    font-size: 1.8rem;
+  }
+
+  .fullblog-text {
+    font-size: 0.95rem;
+  }
+
+  .blog-interaction input[type="text"] {
+    width: 100%;
+  }
+
+  .blog-interaction button {
+    width: 100%;
+  }
+
+  .comment-card {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .fullblog-title {
+    font-size: 1.5rem;
+  }
+
+  .fullblog-text {
+    font-size: 0.9rem;
+  }
+
+  .blog-interaction input[type="text"] {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .blog-interaction button {
+    width: 100%;
+    font-size: 12px;
+  }
+
+  .comment-card {
+    width: 100%;
   }
 }

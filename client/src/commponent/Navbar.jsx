@@ -6,6 +6,9 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import { useAuthContext } from "../Context/authContext";
 import HomeIcon from "@mui/icons-material/Home";
+import CreateIcon from '@mui/icons-material/Create';
+import ContactMailIcon from '@mui/icons-material/ContactMail';
+import InfoIcon from '@mui/icons-material/Info';
 import LogoutIcon from "@mui/icons-material/Logout";
 
 const Navbar = () => {
@@ -29,10 +32,12 @@ const Navbar = () => {
       </div>
       <div className="visiting_links">
         <Link to="/">{<HomeIcon />}Home</Link>
-        <Link to="/about">About</Link>
-        <Link to="/contact">Contact</Link>
+        <Link to="/about"><InfoIcon/>About</Link>
+        <Link to="/contact">{<ContactMailIcon/>}Contact</Link>
+        <Link to='/createpost'>{<CreateIcon/>}Share</Link>
       </div>
       <div className="userInfo">
+        {/* <button >{<CreateIcon/>}Blog</button> */}
         <button onClick={logout}>{<LogoutIcon />}</button>
       </div>
     </div>

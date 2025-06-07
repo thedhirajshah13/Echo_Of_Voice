@@ -84,3 +84,55 @@ a {
   align-items: center;
   cursor: pointer;
 }
+
+/* For tablets & larger phones */
+@media (max-width: 768px) {
+  .blogsection {
+    margin-top: 100px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .postCard {
+    width: 80%; /* Cards take more space */
+  }
+
+  .pagination {
+    margin: 0 auto;
+  }
+
+  .pagination button {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+/* For mobile devices */
+@media (max-width: 480px) {
+  .blogsection {
+    margin-top: 80px;
+  }
+
+  .postCard {
+    width: 95%; /* Full width for best mobile experience */
+  }
+
+  .postCard h4 {
+    font-size: 18px;
+  }
+
+  .postCard span {
+    font-size: 14px;
+  }
+
+  .pagination {
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .pagination button {
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+}

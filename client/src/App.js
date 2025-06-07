@@ -8,6 +8,7 @@ import Login from "./commponent/Login";
 import Register from "./commponent/Register";
 import Main from "./Pages/Main";
 import Fullblog from "./commponent/Fullblog";
+import Blog from "./commponent/Blog"
 import "./app.css";
 
 function App() {
@@ -23,10 +24,12 @@ function App() {
             <Route path="/login" element={<Login />} />
             <Route path="register" element={<Register />} />
             <Route path="/fullblog/:id" element={<Fullblog />} />
+            {/* <Route path="createblog" element={<Blog/>}/> */}
             <Route
               path="createpost"
               element={auth ? <BlogPost /> : <Navigate to="/login" />}
             />
+            
           </Routes>
           </SocketContextProvider>
         </BlogContentProvider>

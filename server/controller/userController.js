@@ -51,6 +51,7 @@ export const userLogin = async (req, res) => {
     const { email, password } = req.body;
     console.log(email);
     const findUser = await userModel.findOne({ email });
+    console.log(findUser)
     if (!findUser) {
       return res
         .status(404)

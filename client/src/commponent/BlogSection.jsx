@@ -14,6 +14,7 @@ import tech from "../asset/BlogImage/tech.png";
 import travel from "../asset/BlogImage/travel.jpeg";
 
 const BlogSection = () => {
+  
   const [post, setpost] = useState([]);
   const {setBlogContent} =useBlogContentContex();
   const [totalPage, setTotalPage] = useState(0);
